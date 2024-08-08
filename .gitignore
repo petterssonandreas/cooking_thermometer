@@ -56,3 +56,6 @@ fp-info-cache
 **/*-backups/*
 *.kicad_sch.lck
 *.kicad_sch-bak
+
+# Builds
+build/
