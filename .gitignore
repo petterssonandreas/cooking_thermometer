@@ -59,3 +59,4 @@ fp-info-cache
 
 # Builds
 build/
+.cache/
