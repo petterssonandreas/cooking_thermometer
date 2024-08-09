@@ -59,20 +59,20 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define UI_LED_Pin GPIO_PIN_0
 #define UI_LED_GPIO_Port GPIOA
-#define UI_A_Pin GPIO_PIN_1
-#define UI_A_GPIO_Port GPIOA
+#define ADC1_BATT_MEAS_Pin GPIO_PIN_1
+#define ADC1_BATT_MEAS_GPIO_Port GPIOA
 #define UI_B_Pin GPIO_PIN_2
 #define UI_B_GPIO_Port GPIOA
-#define ADC3_TEMP_MEAS_Pin GPIO_PIN_3
-#define ADC3_TEMP_MEAS_GPIO_Port GPIOA
-#define ADC4_BATT_MEAS_Pin GPIO_PIN_4
-#define ADC4_BATT_MEAS_GPIO_Port GPIOA
+#define UI_A_Pin GPIO_PIN_3
+#define UI_A_GPIO_Port GPIOA
+#define TIM14_CH1_BUZZER_PWM_Pin GPIO_PIN_4
+#define TIM14_CH1_BUZZER_PWM_GPIO_Port GPIOA
 #define UI_C_Pin GPIO_PIN_5
 #define UI_C_GPIO_Port GPIOA
-#define TIM3_CH1_BUZZER_PWM_Pin GPIO_PIN_6
-#define TIM3_CH1_BUZZER_PWM_GPIO_Port GPIOA
-#define nJACK_CONNECTED_Pin GPIO_PIN_1
-#define nJACK_CONNECTED_GPIO_Port GPIOB
+#define nJACK_CONNECTED_Pin GPIO_PIN_7
+#define nJACK_CONNECTED_GPIO_Port GPIOA
+#define ADC9_TEMP_MEAS_Pin GPIO_PIN_1
+#define ADC9_TEMP_MEAS_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

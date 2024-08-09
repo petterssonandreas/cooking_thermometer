@@ -60,7 +60,7 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(UI_LED_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PAPin PAPin PAPin */
-  GPIO_InitStruct.Pin = UI_A_Pin|UI_B_Pin|UI_C_Pin;
+  GPIO_InitStruct.Pin = UI_B_Pin|UI_A_Pin|UI_C_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
