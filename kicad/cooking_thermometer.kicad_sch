@@ -3945,6 +3945,16 @@
 	)
 	(wire
 		(pts
+			(xy 190.5 73.66) (xy 162.56 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ceceab2-6f2b-4e4e-8e11-d5547661bffe")
+	)
+	(wire
+		(pts
 			(xy 167.64 91.44) (xy 162.56 91.44)
 		)
 		(stroke
@@ -4195,6 +4205,16 @@
 	)
 	(wire
 		(pts
+			(xy 167.64 68.58) (xy 162.56 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3aed1fe6-0e0d-4a1a-b9d6-cfc195f79461")
+	)
+	(wire
+		(pts
 			(xy 54.61 105.41) (xy 54.61 104.14)
 		)
 		(stroke
@@ -4202,6 +4222,16 @@
 			(type default)
 		)
 		(uuid "3c27353c-4810-4719-83c2-6b28d92ef4bb")
+	)
+	(wire
+		(pts
+			(xy 127 83.82) (xy 132.08 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d9c7586-b1f5-4139-b447-6b38c582370a")
 	)
 	(wire
 		(pts
@@ -4405,16 +4435,6 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 73.66) (xy 179.07 73.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "56705767-e460-4ad9-9c14-6a3b795055ff")
-	)
-	(wire
-		(pts
 			(xy 127 71.12) (xy 127 50.8)
 		)
 		(stroke
@@ -4505,7 +4525,7 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 76.2) (xy 179.07 76.2)
+			(xy 162.56 76.2) (xy 167.64 76.2)
 		)
 		(stroke
 			(width 0)
@@ -4552,6 +4572,16 @@
 			(type default)
 		)
 		(uuid "70fa43fc-c2b1-4e6a-929d-4104ba73f883")
+	)
+	(wire
+		(pts
+			(xy 162.56 83.82) (xy 198.12 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7220780d-c530-4924-bd8c-a63bcdffc259")
 	)
 	(wire
 		(pts
@@ -4612,16 +4642,6 @@
 			(type default)
 		)
 		(uuid "7fd7fbe5-066a-44a9-83f1-f0a1b0f4050a")
-	)
-	(wire
-		(pts
-			(xy 167.64 81.28) (xy 162.56 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "80d2a9de-34ba-4531-90e9-66d3f29d6af4")
 	)
 	(wire
 		(pts
@@ -4725,13 +4745,13 @@
 	)
 	(wire
 		(pts
-			(xy 127 83.82) (xy 132.08 83.82)
+			(xy 198.12 68.58) (xy 190.5 68.58)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "94997282-3419-4099-aa7d-cba55d3aed23")
+		(uuid "94fc7515-f84d-42e2-817e-e5141f5b8d34")
 	)
 	(wire
 		(pts
@@ -5065,16 +5085,6 @@
 	)
 	(wire
 		(pts
-			(xy 198.12 68.58) (xy 162.56 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cf4ed030-906f-4db0-8515-8020a0b4dc19")
-	)
-	(wire
-		(pts
 			(xy 114.3 35.56) (xy 119.38 35.56)
 		)
 		(stroke
@@ -5102,6 +5112,16 @@
 			(type default)
 		)
 		(uuid "df28c7e0-a170-4b09-8e2f-8892c5f971ac")
+	)
+	(wire
+		(pts
+			(xy 190.5 68.58) (xy 190.5 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dfbd7901-d105-494e-bf5a-2911a6d40456")
 	)
 	(wire
 		(pts
@@ -5305,7 +5325,7 @@
 	)
 	(text_box "Internal pull-up"
 		(exclude_from_sim no)
-		(at 91.44 80.01 0)
+		(at 196.85 80.01 0)
 		(size 36.83 6.35)
 		(stroke
 			(width 0)
@@ -5318,7 +5338,7 @@
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "2aba48ce-45aa-498c-9bce-9b8c92c64764")
 	)
@@ -5382,6 +5402,17 @@
 		)
 		(uuid "060277ab-9c97-4a21-85a9-d8f4c40bc3c8")
 	)
+	(label "ADC9_TEMP_MEAS"
+		(at 127 83.82 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "0217ec7d-a3af-4025-9f4f-3965b6061fe7")
+	)
 	(label "NRST"
 		(at 132.08 24.13 0)
 		(fields_autoplaced yes)
@@ -5437,8 +5468,8 @@
 		)
 		(uuid "1d45f760-b2c0-4ee1-85ed-3410c7723e2e")
 	)
-	(label "BATT_MEAS"
-		(at 179.07 76.2 0)
+	(label "TIM14_CH1_BUZZER_PWM"
+		(at 167.64 76.2 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5446,7 +5477,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "218bf33a-5ad7-4d42-8deb-b018ee9004c7")
+		(uuid "280d70b8-22a9-40e4-a0b7-9f6e4894f41e")
 	)
 	(label "I2C1_SDA"
 		(at 53.34 186.69 0)
@@ -5480,17 +5511,6 @@
 			(justify left bottom)
 		)
 		(uuid "530fb666-5a97-4803-8197-8d1063273594")
-	)
-	(label "TIM3_CH1_BUZZER_PWM"
-		(at 167.64 81.28 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "5eea66c7-d9e4-4bc6-8689-2963055a8664")
 	)
 	(label "I2C1_SDA"
 		(at 127 76.2 180)
@@ -5569,7 +5589,7 @@
 		)
 		(uuid "8f4a4a98-b0f1-4a88-9599-c3bed44e408d")
 	)
-	(label "TIM3_CH1_BUZZER_PWM"
+	(label "TIM14_CH1_BUZZER_PWM"
 		(at 209.55 128.27 180)
 		(fields_autoplaced yes)
 		(effects
@@ -5578,18 +5598,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "9a30abb2-61fa-48ff-a7df-8db83a4ce5da")
-	)
-	(label "ADC_IN3"
-		(at 167.64 73.66 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9d2384dd-75cd-4a61-8c0c-9b8f2a160cd6")
+		(uuid "8fb29b3b-02d2-4598-aed5-8dfd0194e057")
 	)
 	(label "UART1_TX"
 		(at 264.16 48.26 180)
@@ -5602,7 +5611,7 @@
 		)
 		(uuid "9e58cbfc-3e08-4879-8f56-54642960e2d6")
 	)
-	(label "TEMP_MEAS"
+	(label "ADC9_TEMP_MEAS"
 		(at 62.23 134.62 0)
 		(fields_autoplaced yes)
 		(effects
@@ -5635,6 +5644,28 @@
 		)
 		(uuid "a49a0389-2b79-453c-ba91-f0b9ab04b800")
 	)
+	(label "ADC1_BATT_MEAS"
+		(at 167.64 68.58 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ab6389ff-7998-4d1c-ae56-98f993615247")
+	)
+	(label "~{JACK_CONNECTED}"
+		(at 198.12 83.82 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b8ab4627-c19f-4064-8b45-2ef78e07e670")
+	)
 	(label "CTS1"
 		(at 264.16 55.88 180)
 		(fields_autoplaced yes)
@@ -5645,17 +5676,6 @@
 			(justify right bottom)
 		)
 		(uuid "bd308139-27fa-4013-88a6-3bfb150e9b84")
-	)
-	(label "ADC_IN4"
-		(at 167.64 76.2 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "bef7f405-c78b-42bd-b6b3-8eb315308f46")
 	)
 	(label "UI_C"
 		(at 48.26 91.44 0)
@@ -5668,7 +5688,7 @@
 		)
 		(uuid "ce168d44-507c-45b9-8c6b-e7f52f01062e")
 	)
-	(label "BATT_MEAS"
+	(label "ADC1_BATT_MEAS"
 		(at 170.18 134.62 0)
 		(fields_autoplaced yes)
 		(effects
@@ -5700,17 +5720,6 @@
 			(justify left bottom)
 		)
 		(uuid "eb2c4382-5d83-47de-b258-3e52529bedf8")
-	)
-	(label "~{JACK_CONNECTED}"
-		(at 127 83.82 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "eba0298e-455b-4259-af0b-6cf182cf2db9")
 	)
 	(label "7SEG_DIO"
 		(at 135.89 186.69 0)
@@ -5744,17 +5753,6 @@
 			(justify left bottom)
 		)
 		(uuid "f8388c44-cf81-4767-a1c8-ca0f4613adf7")
-	)
-	(label "TEMP_MEAS"
-		(at 179.07 73.66 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f94e29f9-3783-4395-b153-125c02437828")
 	)
 	(label "~{JACK_CONNECTED}"
 		(at 40.64 156.21 0)
