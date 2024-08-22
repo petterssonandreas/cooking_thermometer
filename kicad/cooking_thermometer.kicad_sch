@@ -4217,16 +4217,8 @@
 		(uuid "fd8394b4-cb13-414f-af9f-23feb88ed85f")
 	)
 	(no_connect
-		(at 274.32 152.4)
-		(uuid "3656f569-eddb-4591-8725-957df7cc7a70")
-	)
-	(no_connect
 		(at 264.16 55.88)
 		(uuid "752d8bc6-e6cb-4d75-9f4a-4b6361d8511c")
-	)
-	(no_connect
-		(at 274.32 149.86)
-		(uuid "cb38ad4a-ff70-4928-9593-6776a38003ab")
 	)
 	(no_connect
 		(at 264.16 45.72)
@@ -5957,6 +5949,17 @@
 		)
 		(uuid "1d45f760-b2c0-4ee1-85ed-3410c7723e2e")
 	)
+	(label "UART1_TX"
+		(at 274.32 152.4 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "25efab42-d4c9-4c18-b8df-659628965e46")
+	)
 	(label "TIM3_CH2_BUZZER_PWM"
 		(at 163.83 87.63 0)
 		(fields_autoplaced yes)
@@ -6088,6 +6091,17 @@
 			(justify right bottom)
 		)
 		(uuid "8fb29b3b-02d2-4598-aed5-8dfd0194e057")
+	)
+	(label "UART1 RX"
+		(at 274.32 149.86 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "93ea55e8-54bc-48ce-8d1f-4b5e25fd9e44")
 	)
 	(label "BOOT0"
 		(at 172.72 105.41 0)
@@ -6848,7 +6862,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal"
+		(property "Footprint" "MyOwnFootprintLibrary:USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal_Long_Pads"
 			(at 262.89 142.24 0)
 			(effects
 				(font
@@ -11429,7 +11443,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_QFP:LQFP-32_7x7mm_P0.8mm"
+		(property "Footprint" "MyOwnFootprintLibrary:LQFP-32_7x7mm_P0.8mm_Long_pads"
 			(at 133.35 113.03 0)
 			(effects
 				(font
