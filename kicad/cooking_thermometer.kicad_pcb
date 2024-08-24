@@ -12175,18 +12175,6 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "1"
-		(at 153 94 0)
-		(layer "F.SilkS")
-		(uuid "15faf341-551f-46de-bed9-7a72a93b6918")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.1)
-			)
-			(justify left bottom)
-		)
-	)
 	(gr_text "I2C"
 		(at 210.5 80.5 -90)
 		(layer "F.SilkS")
@@ -12271,10 +12259,34 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "+"
+		(at 153.75 99.75 90)
+		(layer "F.SilkS")
+		(uuid "bea1e93f-a420-4c73-b25a-dac3d451afc2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "1"
 		(at 167 78 0)
 		(layer "F.SilkS")
 		(uuid "d02f9a08-3bed-48d9-bc94-b0b076126f0c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "-"
+		(at 153.75 95.25 90)
+		(layer "F.SilkS")
+		(uuid "df0a4f8b-8bfd-4a86-a129-e50e454baa11")
 		(effects
 			(font
 				(size 1 1)
