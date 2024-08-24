@@ -3260,6 +3260,88 @@
 				)
 			)
 		)
+		(symbol "Mechanical:MountingHole"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole"
+				(at 0 3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole without connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_0_1"
+				(circle
+					(center 0 0)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+		)
 		(symbol "Regulator_Linear:MCP1700x-330xxTO"
 			(pin_names
 				(offset 0.254)
@@ -5861,7 +5943,7 @@
 		)
 		(uuid "bb133cea-88e2-4fc9-9c79-3ebbcc2aa8c6")
 	)
-	(text "TN shorted to T when\njack connected, cut\nwhen not connected"
+	(text "TN shorted to T when\njack NOT connected,\ncut when connected."
 		(exclude_from_sim no)
 		(at 37.338 150.368 0)
 		(effects
@@ -6169,7 +6251,7 @@
 		)
 		(uuid "ab6389ff-7998-4d1c-ae56-98f993615247")
 	)
-	(label "~{JACK_CONNECTED}"
+	(label "JACK_CONNECTED"
 		(at 198.12 87.63 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6279,7 +6361,7 @@
 		)
 		(uuid "f8388c44-cf81-4767-a1c8-ca0f4613adf7")
 	)
-	(label "~{JACK_CONNECTED}"
+	(label "JACK_CONNECTED"
 		(at 40.64 156.21 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6862,7 +6944,7 @@
 				)
 			)
 		)
-		(property "Footprint" "MyOwnFootprintLibrary:USB_C_Receptacle_GCT_USB4125-xx-x_6P_TopMnt_Horizontal_Long_Pads"
+		(property "Footprint" "MyOwnFootprintLibrary:USB_C_Receptacle_6P_TopMnt_Horizontal_Long_Pads_Electrokit_41021035"
 			(at 262.89 142.24 0)
 			(effects
 				(font
@@ -7759,6 +7841,70 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 187.96 151.13 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "35040989-384b-4b24-a3bf-7a4acfb5b860")
+		(property "Reference" "H1"
+			(at 190.5 149.8599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 190.5 152.3999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 187.96 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 187.96 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 187.96 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project ""
+				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 83.82 105.41 0)
 		(unit 1)
@@ -8538,7 +8684,7 @@
 				)
 			)
 		)
-		(property "Footprint" "MyOwnFootprintLibrary:AudioJack_Mono_2.5mm_with_Tip-Detect"
+		(property "Footprint" "MyOwnFootprintLibrary:Jack_Mono_2.5mm_with_Tip-Detect_Electrokit_41010270"
 			(at 31.75 137.16 0)
 			(effects
 				(font
@@ -9249,6 +9395,70 @@
 			(project "cooking_thermometer"
 				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
 					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 201.93 160.02 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7bbc7006-ed3f-457b-a9ba-5c0578457f8f")
+		(property "Reference" "H4"
+			(at 204.47 158.7499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 204.47 161.2899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 201.93 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 201.93 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 201.93 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "cooking_thermometer"
+				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
+					(reference "H4")
 					(unit 1)
 				)
 			)
@@ -10473,6 +10683,70 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 181.61 158.75 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b28a8628-5933-4a77-8ad1-68dbe558e61a")
+		(property "Reference" "H5"
+			(at 184.15 157.4799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 184.15 160.0199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 181.61 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 181.61 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 181.61 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "cooking_thermometer"
+				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
+					(reference "H5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:Conn_01x02_Pin")
 		(at 269.24 97.79 180)
 		(unit 1)
@@ -10534,6 +10808,70 @@
 			(project "cooking_thermometer"
 				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
 					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 204.47 143.51 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bc894e89-79bc-4e02-bfc8-3f9006a8ec7c")
+		(property "Reference" "H3"
+			(at 207.01 142.2399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 207.01 144.7799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 204.47 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 204.47 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 204.47 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "cooking_thermometer"
+				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
+					(reference "H3")
 					(unit 1)
 				)
 			)
@@ -11074,6 +11412,70 @@
 			(project "cooking_thermometer"
 				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
 					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 217.17 152.4 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d137624c-a1df-438a-83d5-3c56c0cc3af9")
+		(property "Reference" "H2"
+			(at 219.71 151.1299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 219.71 153.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 217.17 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 217.17 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 217.17 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "cooking_thermometer"
+				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
+					(reference "H2")
 					(unit 1)
 				)
 			)
