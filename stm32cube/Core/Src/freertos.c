@@ -26,6 +26,10 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "tim.h"
+#include "ssd1306.h"
+// #include "fonts.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -111,6 +115,8 @@ void MX_FREERTOS_Init(void) {
 
 }
 
+extern I2C_HandleTypeDef hi2c1;
+
 /* USER CODE BEGIN Header_StartDefaultTask */
 /**
   * @brief  Function implementing the defaultTask thread.
@@ -121,10 +127,66 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void const * argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
+
+
+  // Init lcd using one of the stm32HAL i2c typedefs
+  if (ssd1306_Init(&hi2c1) != 0) {
+    Error_Handler();
+  }
+  HAL_Delay(1000);
+
+  ssd1306_Fill(Black);
+  ssd1306_UpdateScreen(&hi2c1);
+
+  // HAL_Delay(1000);
+
+  // // Write data to local screenbuffer
+  // ssd1306_SetCursor(0, 0);
+  // // ssd1306_WriteString("a", Font_7x10, White);
+
+  // ssd1306_SetCursor(0, 8);
+  // // ssd1306_WriteString("b", Font_7x10, White);
+
+  // // // Draw rectangle on screen
+  // // for (uint8_t i=0; i<28; i++) {
+  // //     for (uint8_t j=0; j<64; j++) {
+  // //         ssd1306_DrawPixel(100+i, 0+j, White);
+  // //     }
+  // // }
+
+
+  // ssd1306_Fill(White);
+  // ssd1306_UpdateScreen(&hi2c1);
+
+  // HAL_Delay(1000);
+
+
+  // ssd1306_Fill(Black);
+  // ssd1306_UpdateScreen(&hi2c1);
+
+  // HAL_Delay(1000);
+
+  // // Copy all data from local screenbuffer to the screen
+  // ssd1306_UpdateScreen(&hi2c1);
+
+
+
+
+
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(1000);
+    HAL_GPIO_WritePin(UI_LED_GPIO_Port, UI_LED_Pin, GPIO_PIN_SET);
+    // buzzer_start();
+    ssd1306_Fill(White);
+    ssd1306_UpdateScreen(&hi2c1);
+
+    osDelay(1000);
+    HAL_GPIO_WritePin(UI_LED_GPIO_Port, UI_LED_Pin, GPIO_PIN_RESET);
+    // buzzer_stop();
+    ssd1306_Fill(Black);
+    ssd1306_UpdateScreen(&hi2c1);
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -133,4 +195,3 @@ void StartDefaultTask(void const * argument)
 /* USER CODE BEGIN Application */
 
 /* USER CODE END Application */
-
