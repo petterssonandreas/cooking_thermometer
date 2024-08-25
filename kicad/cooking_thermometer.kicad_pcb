@@ -612,7 +612,7 @@
 		(descr "Generic 6mm SW tactile push button")
 		(tags "tact sw push 6mm")
 		(property "Reference" "SW4"
-			(at 3.25 -2 0)
+			(at 6.388 -1.95 0)
 			(layer "F.SilkS")
 			(uuid "956b5584-d905-44f9-baef-b801729e518e")
 			(effects
@@ -1184,7 +1184,7 @@
 		(descr "Generic 6mm SW tactile push button")
 		(tags "tact sw push 6mm")
 		(property "Reference" "SW5"
-			(at 3.25 -2 0)
+			(at 6.348 -2 0)
 			(layer "F.SilkS")
 			(uuid "f35eef4e-7d34-4081-a1e9-8f885ac336ba")
 			(effects
@@ -5703,7 +5703,7 @@
 		(descr "Mounting Hole 3.2mm, no annular, M3")
 		(tags "mounting hole 3.2mm no annular m3")
 		(property "Reference" "H5"
-			(at 0 -4.2 0)
+			(at 4.6 1.1 0)
 			(layer "F.SilkS")
 			(uuid "548f3a47-c9a8-4cd8-8efc-a9fa28294238")
 			(effects
@@ -6839,7 +6839,7 @@
 		(descr "Through hole straight pin header, 1x02, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x02 2.54mm single row")
 		(property "Reference" "J7"
-			(at 0.25 -2.33 0)
+			(at 0.15 -2.46 0)
 			(layer "F.SilkS")
 			(uuid "713310a7-abf6-4a01-aa23-cd0286ddfdaa")
 			(effects
@@ -9720,7 +9720,7 @@
 		(descr "Generic 6mm SW tactile push button")
 		(tags "tact sw push 6mm")
 		(property "Reference" "SW1"
-			(at 3.25 -2 0)
+			(at -0.024 -2 0)
 			(layer "F.SilkS")
 			(uuid "feee8390-b2f9-4603-8674-cbb4f83f369b")
 			(effects
@@ -11335,7 +11335,7 @@
 		(descr "Generic 6mm SW tactile push button")
 		(tags "tact sw push 6mm")
 		(property "Reference" "SW2"
-			(at 3.25 -2 0)
+			(at -0.01 -1.994 0)
 			(layer "F.SilkS")
 			(uuid "1d9b72f3-ef12-429c-a544-79773b77963e")
 			(effects
@@ -12022,7 +12022,7 @@
 		(descr "Generic 6mm SW tactile push button")
 		(tags "tact sw push 6mm")
 		(property "Reference" "SW3"
-			(at 3.25 -2 0)
+			(at 6.428 -1.95 0)
 			(layer "F.SilkS")
 			(uuid "fe79e85e-5cd5-4a9c-9ecd-2dcb50ad8536")
 			(effects
@@ -13203,6 +13203,17 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "C"
+		(at 190.4 115.2 0)
+		(layer "F.SilkS")
+		(uuid "21375d38-7da4-46e8-9f19-cbaf453278d7")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
 	(gr_text "FTDI"
 		(at 149 86.5 90)
 		(layer "F.SilkS")
@@ -13224,6 +13235,18 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
+		)
+	)
+	(gr_text "BOOT0"
+		(at 200.5 77.6 0)
+		(layer "F.SilkS")
+		(uuid "57891443-c422-455b-b32e-b707db6e40ab")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
 		)
 	)
 	(gr_text "1"
@@ -13321,6 +13344,18 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "RST"
+		(at 189.9 77.6 0)
+		(layer "F.SilkS")
+		(uuid "c66d47e5-28b3-4c99-b5f6-8faa17885636")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "CHG"
 		(at 154.75 79.25 0)
 		(layer "F.SilkS")
@@ -13345,6 +13380,17 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "A"
+		(at 170.2 115.2 0)
+		(layer "F.SilkS")
+		(uuid "d7ea9776-d96e-40e3-a718-1136962634ed")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
 	(gr_text "-"
 		(at 149.056 95.226 90)
 		(layer "F.SilkS")
@@ -13357,6 +13403,17 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "5V"
+		(at 160.6 107.4 0)
+		(layer "F.SilkS")
+		(uuid "ea297e6c-d208-4fc9-85a7-8652c287866d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
 	(gr_text "PWR"
 		(at 159 79.25 0)
 		(layer "F.SilkS")
@@ -13367,6 +13424,17 @@
 				(thickness 0.15)
 			)
 			(justify left bottom)
+		)
+	)
+	(gr_text "B"
+		(at 180.2 115.2 0)
+		(layer "F.SilkS")
+		(uuid "fd502e71-b147-4f75-b0b2-3e8ea90bf064")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
 		)
 	)
 	(segment
