@@ -4438,7 +4438,7 @@
 	)
 	(wire
 		(pts
-			(xy 53.34 104.14) (xy 54.61 104.14)
+			(xy 40.64 106.68) (xy 41.91 106.68)
 		)
 		(stroke
 			(width 0)
@@ -4698,7 +4698,7 @@
 	)
 	(wire
 		(pts
-			(xy 54.61 105.41) (xy 54.61 104.14)
+			(xy 41.91 107.95) (xy 41.91 106.68)
 		)
 		(stroke
 			(width 0)
@@ -5078,7 +5078,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 104.14) (xy 43.18 104.14)
+			(xy 33.02 106.68) (xy 30.48 106.68)
 		)
 		(stroke
 			(width 0)
@@ -5668,6 +5668,26 @@
 	)
 	(wire
 		(pts
+			(xy 252.73 33.02) (xy 255.27 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d7477edc-33f5-432b-a0f0-638f14645f14")
+	)
+	(wire
+		(pts
+			(xy 255.27 30.48) (xy 252.73 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d8d5487f-7912-4080-9685-d3e51f08d91d")
+	)
+	(wire
+		(pts
 			(xy 222.25 119.38) (xy 222.25 118.11)
 		)
 		(stroke
@@ -5954,9 +5974,9 @@
 		)
 		(uuid "03ab32d9-b059-4df2-a7be-28c2dd41b473")
 	)
-	(text "R1 should match\nthe NTC value at 25C"
+	(text "R1+R2 should match\nthe NTC value at 25C"
 		(exclude_from_sim no)
-		(at 59.69 125.984 0)
+		(at 61.976 124.206 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6010,7 +6030,7 @@
 		(uuid "0e73af45-a16f-4712-9383-75ea0f7d36ca")
 	)
 	(label "UI_LED"
-		(at 35.56 104.14 180)
+		(at 22.86 106.68 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6451,7 +6471,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 53.34 124.46 0)
+		(at 53.34 116.84 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6460,7 +6480,7 @@
 		(fields_autoplaced yes)
 		(uuid "0110366e-4109-44b1-9907-4b6ae09aad79")
 		(property "Reference" "#PWR034"
-			(at 53.34 128.27 0)
+			(at 53.34 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6469,7 +6489,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 53.34 119.38 0)
+			(at 53.34 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6477,7 +6497,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 53.34 124.46 0)
+			(at 53.34 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6486,7 +6506,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 53.34 124.46 0)
+			(at 53.34 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6495,7 +6515,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 53.34 124.46 0)
+			(at 53.34 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7143,6 +7163,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 252.73 30.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "18900d37-dc50-4a04-a2c8-da05d876fc6b")
+		(property "Reference" "#PWR031"
+			(at 252.73 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V_USB"
+			(at 252.73 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 252.73 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 252.73 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 252.73 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "486ab239-7c97-4a0b-97ad-4ce54b7f1685")
+		)
+		(instances
+			(project "cooking_thermometer"
+				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
+					(reference "#PWR031")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 102.87 125.73 0)
 		(unit 1)
@@ -7775,6 +7861,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 53.34 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3109e8a8-9526-4d9c-9f43-4faa0736a6fc")
+		(property "Reference" "R2"
+			(at 55.88 119.3799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 55.88 121.9199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+			(at 51.562 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 53.34 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 53.34 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1077e91f-a3f3-49a1-872d-3b6b03953d15")
+		)
+		(pin "2"
+			(uuid "d668a854-ed98-44da-b08d-01bbe70604bc")
+		)
+		(instances
+			(project "cooking_thermometer"
+				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 264.16 58.42 0)
 		(unit 1)
@@ -8181,7 +8337,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "496b66c2-be5c-48be-a479-04a5d7e6f762")
-		(property "Reference" "R2"
+		(property "Reference" "R11"
 			(at 105.41 54.6099 0)
 			(effects
 				(font
@@ -8235,7 +8391,7 @@
 		(instances
 			(project "cooking_thermometer"
 				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
-					(reference "R2")
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -9201,7 +9357,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 49.53 104.14 90)
+		(at 36.83 106.68 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9210,7 +9366,7 @@
 		(fields_autoplaced yes)
 		(uuid "7747495c-93fe-45ad-ab79-6dc84280455e")
 		(property "Reference" "R3"
-			(at 49.53 97.79 90)
+			(at 36.83 100.33 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9218,7 +9374,7 @@
 			)
 		)
 		(property "Value" "330"
-			(at 49.53 100.33 90)
+			(at 36.83 102.87 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9226,7 +9382,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
-			(at 49.53 105.918 90)
+			(at 36.83 108.458 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9235,7 +9391,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 49.53 104.14 0)
+			(at 36.83 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9244,7 +9400,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 49.53 104.14 0)
+			(at 36.83 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10550,7 +10706,7 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 39.37 104.14 180)
+		(at 26.67 106.68 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10559,7 +10715,7 @@
 		(fields_autoplaced yes)
 		(uuid "b05471af-bdc7-4758-893c-b672ffccfe16")
 		(property "Reference" "D2"
-			(at 40.9575 96.52 0)
+			(at 28.2575 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10567,7 +10723,7 @@
 			)
 		)
 		(property "Value" "WHITE_LED"
-			(at 40.9575 99.06 0)
+			(at 28.2575 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10575,7 +10731,7 @@
 			)
 		)
 		(property "Footprint" "LED_THT:LED_D4.0mm"
-			(at 39.37 104.14 0)
+			(at 26.67 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10584,7 +10740,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 39.37 104.14 0)
+			(at 26.67 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10593,7 +10749,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 39.37 104.14 0)
+			(at 26.67 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10618,7 +10774,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 54.61 105.41 0)
+		(at 41.91 107.95 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10627,7 +10783,7 @@
 		(fields_autoplaced yes)
 		(uuid "b1e0794f-6601-424d-9d99-2da51f61b2ec")
 		(property "Reference" "#PWR01"
-			(at 54.61 111.76 0)
+			(at 41.91 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10636,7 +10792,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 54.61 110.49 0)
+			(at 41.91 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10644,7 +10800,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 54.61 105.41 0)
+			(at 41.91 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10653,7 +10809,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 54.61 105.41 0)
+			(at 41.91 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10662,7 +10818,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 54.61 105.41 0)
+			(at 41.91 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10741,6 +10897,73 @@
 			(project "cooking_thermometer"
 				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
 					(reference "H5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x02_Pin")
+		(at 260.35 33.02 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b9cf8cdb-9dbe-45e5-aa61-70494f77ef92")
+		(property "Reference" "J7"
+			(at 264.414 32.766 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5V_Power"
+			(at 266.7 30.226 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 260.35 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 260.35 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated"
+			(at 260.35 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "eb8a75f5-e32b-41c6-835f-c495c18fd106")
+		)
+		(pin "2"
+			(uuid "8e369106-edbf-44fc-b0b0-3a4baa030032")
+		)
+		(instances
+			(project "cooking_thermometer"
+				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
+					(reference "J7")
 					(unit 1)
 				)
 			)
@@ -11366,7 +11589,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "200k"
+		(property "Value" "100k"
 			(at 55.88 129.5399 0)
 			(effects
 				(font
@@ -12039,6 +12262,72 @@
 			(project "cooking_thermometer"
 				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
 					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 252.73 33.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e2498ada-b78d-467b-82b3-1d4dadc23cee")
+		(property "Reference" "#PWR036"
+			(at 252.73 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 250.698 37.846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 252.73 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 252.73 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 252.73 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fa846320-080c-4a62-b733-082b98fce385")
+		)
+		(instances
+			(project "cooking_thermometer"
+				(path "/85ef19f2-43fb-4258-9165-9df3f0508e67"
+					(reference "#PWR036")
 					(unit 1)
 				)
 			)
