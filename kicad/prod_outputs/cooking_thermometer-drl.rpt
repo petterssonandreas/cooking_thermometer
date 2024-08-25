@@ -1,0 +1,29 @@
+Drill report for cooking_thermometer.kicad_pcb
+Created on 2024-08-25T14:11:26+0200
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  B.Cu                      back
+
+
+Drill file 'cooking_thermometer-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.300mm  0.0118"  (53 holes)
+    T2  0.600mm  0.0236"  (4 holes)  (with 4 slots)
+    T3  0.750mm  0.0295"  (3 holes)
+    T4  0.800mm  0.0315"  (3 holes)
+    T5  0.900mm  0.0354"  (6 holes)
+    T6  1.000mm  0.0394"  (25 holes)  (with 3 slots)
+    T7  1.100mm  0.0433"  (22 holes)
+
+    Total plated holes count 116
+
+
+Drill file 'cooking_thermometer-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+    T1  3.200mm  0.1260"  (5 holes)
+
+    Total unplated holes count 5

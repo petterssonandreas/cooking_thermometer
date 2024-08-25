@@ -1,0 +1,46 @@
+### Footprint positions - created on 2024-08-25T14:18:18+0200 ###
+### Printed by KiCad version 8.0.4
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val               Package                                                                   PosX       PosY       Rot  Side
+BZ1       Passive_Buzzer    Buzzer_12x9.5RM7.6                                                    211.0500  -105.2500  180.0000  top
+C1        1uF               C_1206_3216Metric_Pad1.33x1.80mm_HandSolder                           171.9580  -104.1875   90.0000  top
+C2        1uF               C_1206_3216Metric_Pad1.33x1.80mm_HandSolder                           163.2500  -102.7500    0.0000  top
+C3        4.7uF             C_1206_3216Metric_Pad1.33x1.80mm_HandSolder                           174.5000   -97.2820  -90.0000  top
+C4        100nF             C_1206_3216Metric_Pad1.33x1.80mm_HandSolder                           177.0000   -97.2820  -90.0000  top
+C8        100nF             C_1206_3216Metric_Pad1.33x1.80mm_HandSolder                           194.2500   -87.5000   90.0000  top
+C9        4.7uF             C_1206_3216Metric_Pad1.33x1.80mm_HandSolder                           169.6720   -87.3760    0.0000  top
+C10       4.7uF             C_1206_3216Metric_Pad1.33x1.80mm_HandSolder                           156.2500   -86.9375   90.0000  top
+D1        1N5817            D_DO-41_SOD81_P10.16mm_Horizontal                                     169.3300   -97.0000  180.0000  top
+D2        WHITE_LED         LED_D4.0mm                                                            199.6440  -111.5060  180.0000  top
+D3        RED_LED_CHARGING  LED_Rectangular_W5.0mm_H2.0mm                                         155.2250   -80.7500    0.0000  top
+D4        GREEN_LED_PWR     LED_Rectangular_W5.0mm_H2.0mm                                         161.2500   -80.7500    0.0000  top
+J1        FTDI              PinHeader_1x06_P2.54mm_Vertical                                       150.5000   -91.4400  180.0000  top
+J2        STLINK            PinHeader_1x04_P2.54mm_Vertical                                       183.6420   -79.2480  -90.0000  top
+J3        3V3_Power         PinHeader_1x02_P2.54mm_Vertical                                       169.1640   -79.2480   90.0000  top
+J4        Battery           PinHeader_1x02_P2.54mm_Vertical                                       150.5000   -95.4750    0.0000  top
+J6        OLED_CONN         PinHeader_1x04_P2.54mm_Vertical                                       208.7880   -79.2480   90.0000  top
+J7        5V_Power          PinHeader_1x02_P2.54mm_Vertical                                       163.2500  -108.5400  180.0000  top
+J8        THERMO_CONN       Jack_Mono_2.5mm_with_Tip-Detect_Electrokit_41010270                   214.2575   -94.7900    0.0000  top
+J9        USB_C             USB_C_Receptacle_6P_TopMnt_Horizontal_Long_Pads_Electrokit_41021035   150.6725  -106.2500  -90.0000  top
+Q1        BC547             TO-92L_Inline_Wide                                                    198.7500  -107.5400   90.0000  top
+R1        100k              R_1206_3216Metric_Pad1.30x1.75mm_HandSolder                           220.2500   -98.2500   90.0000  top
+R2        100k              R_1206_3216Metric_Pad1.30x1.75mm_HandSolder                           220.2500  -103.2500   90.0000  top
+R3        330               R_1206_3216Metric_Pad1.30x1.75mm_HandSolder                           203.6820  -113.0300    0.0000  top
+R4        2k                R_1206_3216Metric_Pad1.30x1.75mm_HandSolder                           169.6510   -85.0900  180.0000  top
+R5        1k                R_1206_3216Metric_Pad1.30x1.75mm_HandSolder                           206.7500   -95.5000  -90.0000  top
+R6        330               R_1206_3216Metric_Pad1.30x1.75mm_HandSolder                           158.7500   -86.9500   90.0000  top
+R7        4k7               R_1206_3216Metric_Pad1.30x1.75mm_HandSolder                           191.9980  -105.4100    0.0000  top
+R8        100k              R_1206_3216Metric_Pad1.30x1.75mm_HandSolder                           159.9500   -99.7500    0.0000  top
+R9        100k              R_1206_3216Metric_Pad1.30x1.75mm_HandSolder                           165.0000   -99.7500    0.0000  top
+R10       330               R_1206_3216Metric_Pad1.30x1.75mm_HandSolder                           164.7500   -78.0000    0.0000  top
+R11       10k               R_1206_3216Metric_Pad1.30x1.75mm_HandSolder                           199.6180   -86.3600    0.0000  top
+SW1       BOOT0_SW          SW_PUSH_6mm                                                           198.2240   -78.9940    0.0000  top
+SW2       NRST_SW           SW_PUSH_6mm                                                           187.8100   -78.9940    0.0000  top
+SW3       UI_A_SW           SW_PUSH_6mm                                                           173.2280  -113.2500  180.0000  top
+SW4       UI_B_SW           SW_PUSH_6mm                                                           183.3880  -113.2500  180.0000  top
+SW5       UI_C_SW           SW_PUSH_6mm                                                           193.5480  -113.2500  180.0000  top
+U1        STM32G0B0KETx     LQFP-32_7x7mm_P0.8mm_Long_pads                                        186.9440   -96.0120    0.0000  top
+U2        MCP1700x-330xxTO  TO-92_Inline                                                          168.0000  -102.7100  -90.0000  top
+U3        MCP73831-2-OT     SOT-23-5_HandSoldering                                                164.5170   -86.1720    0.0000  top
+## End
