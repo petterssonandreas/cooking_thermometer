@@ -6839,7 +6839,7 @@
 		(descr "Through hole straight pin header, 1x02, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x02 2.54mm single row")
 		(property "Reference" "J7"
-			(at 0.25 -2.33 360)
+			(at 0.25 -2.33 0)
 			(layer "F.SilkS")
 			(uuid "713310a7-abf6-4a01-aa23-cd0286ddfdaa")
 			(effects
@@ -6850,7 +6850,7 @@
 			)
 		)
 		(property "Value" "5V_Power"
-			(at 0 4.87 360)
+			(at 0 4.87 0)
 			(layer "F.Fab")
 			(uuid "62065a0c-42ea-4a10-9b3c-f02fc4b440dc")
 			(effects
@@ -8158,7 +8158,7 @@
 		(descr "Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor handsolder")
 		(property "Reference" "C2"
-			(at -3.25 1 360)
+			(at -3.25 1 0)
 			(layer "F.SilkS")
 			(uuid "c644257a-1c39-47f8-9b5e-9cf0ee4cd7f8")
 			(effects
@@ -8169,7 +8169,7 @@
 			)
 		)
 		(property "Value" "1uF"
-			(at 0 1.85 360)
+			(at 0 1.85 0)
 			(layer "F.Fab")
 			(uuid "c7e93d92-6655-4fc3-b1dd-f3825cc1fe1b")
 			(effects
@@ -8324,7 +8324,7 @@
 			(uuid "c0c1b446-85f0-4500-ae75-4216e0903bc5")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "fd2a3b79-3562-46d0-94d7-ed09fe1b837b")
 			(effects
