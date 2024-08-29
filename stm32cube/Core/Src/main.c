@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "cmsis_os.h"
 #include "adc.h"
 #include "i2c.h"
 #include "tim.h"
@@ -27,6 +26,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#include "ssd1306.h"
+#include "fonts.h"
 
 /* USER CODE END Includes */
 
@@ -53,7 +55,6 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -98,21 +99,67 @@ int main(void)
   MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
 
+
+  // Init lcd using one of the stm32HAL i2c typedefs
+  if (ssd1306_Init(&hi2c1) != 0) {
+    Error_Handler();
+  }
+  HAL_Delay(1000);
+
+  ssd1306_Fill(Black);
+  ssd1306_UpdateScreen(&hi2c1);
+
+  HAL_Delay(1000);
+
+  // Write data to local screenbuffer
+  // ssd1306_SetCursor(0, 0);
+  // ssd1306_WriteString("ssd1306", Font_7x10, White);
+
+  // ssd1306_SetCursor(0, 16);
+  // ssd1306_WriteString("4ilo", Font_7x10, White);
+
+  // for (uint8_t y = 0; y < 64; y++) {
+  //   for (uint8_t x=(y*2); x<((y+1)*2); x++) {
+  //       ssd1306_DrawPixel(x, y, White);
+  //   }
+  // }
+
+  // for (uint8_t y = 0; y < 32; y += 2) {
+  //   for (uint8_t x=((y*4)+4); x<(((y+1)*4)+4); x++) {
+  //       ssd1306_DrawPixel(x, y + 32, White);
+  //   }
+  // }
+
+  // for (uint8_t x = 0; x < 128; x++) {
+  //   ssd1306_DrawPixel(x, 63, White);
+  // }
+
+  ssd1306_SetCursor(0, 0);
+  // ssd1306_WriteChar('8', Font_11x18, White);
+  ssd1306_WriteString("Andreas", Font_16x26, White);
+  ssd1306_SetCursor(0, 32);
+  ssd1306_WriteString("Pettersson", Font_16x26, White);
+
+
+  // for (uint8_t y=0; y<8; y++) {
+  // }
+
+  // Copy all data from local screenbuffer to the screen
+  ssd1306_UpdateScreen(&hi2c1);
+
+
+
+
   /* USER CODE END 2 */
-
-  /* Call init function for freertos objects (in cmsis_os2.c) */
-  MX_FREERTOS_Init();
-
-  /* Start scheduler */
-  osKernelStart();
-
-  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
+
+    HAL_GPIO_TogglePin(UI_LED_GPIO_Port, UI_LED_Pin);
+    HAL_Delay(1000);
 
     /* USER CODE BEGIN 3 */
   }

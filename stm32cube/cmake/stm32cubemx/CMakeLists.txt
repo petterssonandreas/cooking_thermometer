@@ -16,9 +16,6 @@ target_include_directories(stm32cubemx INTERFACE
     ../../Core/Inc
     ../../Drivers/STM32F0xx_HAL_Driver/Inc
     ../../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy
-    ../../Middlewares/Third_Party/FreeRTOS/Source/include
-    ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
-    ../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM0
     ../../Drivers/CMSIS/Device/ST/STM32F0xx/Include
     ../../Drivers/CMSIS/Include
 )
@@ -26,8 +23,8 @@ target_include_directories(stm32cubemx INTERFACE
 target_sources(stm32cubemx INTERFACE
     ../../Core/Src/main.c
     ../../Core/Src/gpio.c
-    ../../Core/Src/freertos.c
     ../../Core/Src/adc.c
+    ../../Core/Src/fonts.c
     ../../Core/Src/i2c.c
     ../../Core/Src/ssd1306.c
     ../../Core/Src/tim.c
@@ -55,16 +52,6 @@ target_sources(stm32cubemx INTERFACE
     ../../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart.c
     ../../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart_ex.c
     ../../Core/Src/system_stm32f0xx.c
-    ../../Middlewares/Third_Party/FreeRTOS/Source/croutine.c
-    ../../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
-    ../../Middlewares/Third_Party/FreeRTOS/Source/list.c
-    ../../Middlewares/Third_Party/FreeRTOS/Source/queue.c
-    ../../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
-    ../../Middlewares/Third_Party/FreeRTOS/Source/tasks.c
-    ../../Middlewares/Third_Party/FreeRTOS/Source/timers.c
-    ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c
-    ../../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
-    ../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM0/port.c
     ../../Core/Src/sysmem.c
     ../../Core/Src/syscalls.c
     ../../startup_stm32f070x6.s

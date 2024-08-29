@@ -10,7 +10,7 @@
             "executable": "./build/Debug/cooking_thermometer.elf",
             "request": "launch",
             "type": "cortex-debug",
-            "runToEntryPoint": "main",
+            // "runToEntryPoint": "main",
             "servertype": "jlink",
             "device": "STM32F070F6",
         }
