@@ -1,0 +1,13 @@
+menu "Cooking Thermometer configuration"
+
+module = MAIN
+module-str = Main
+source "subsys/logging/Kconfig.template.log_config"
+
+module = BUTTONS
+module-str = Buttons
+source "subsys/logging/Kconfig.template.log_config"
+
+endmenu
+
+source "Kconfig.zephyr"

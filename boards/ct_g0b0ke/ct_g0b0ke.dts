@@ -29,29 +29,27 @@
 		compatible = "gpio-keys";
 		user_button_a: button_a {
 			label = "Button A";
-			gpios = <&gpioa 3 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpioa 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 			zephyr,code = <INPUT_KEY_A>;
-			// bias-pull-down;
 		};
 		user_button_b: button_b {
 			label = "Button B";
-			gpios = <&gpioa 4 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpioa 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 			zephyr,code = <INPUT_KEY_B>;
-			// bias-pull-down;
 		};
 		user_button_c: button_c {
 			label = "Button C";
-			gpios = <&gpioa 5 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpioa 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 			zephyr,code = <INPUT_KEY_C>;
-			// bias-pull-down;
 		};
 	};
 
 	aliases {
 		led0 = &ui_led_1;
 		sw0 = &user_button_a;
-		sw1 = &user_button_b;
-		sw2 = &user_button_c;
+		swa = &user_button_a;
+		swb = &user_button_b;
+		swc = &user_button_c;
 		// watchdog0 = &iwdg;
 		// die-temp0 = &die_temp;
 		// volt-sensor0 = &vref;
