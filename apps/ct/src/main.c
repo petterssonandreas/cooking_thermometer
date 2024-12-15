@@ -23,14 +23,11 @@ LOG_MODULE_REGISTER(main);
  */
 static struct gpio_dt_spec led = GPIO_DT_SPEC_GET_OR(DT_ALIAS(led0), gpios, {0});
 
-void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t pins)
-{
-    LOG_INF("Button pressed at %" PRIu32 "", k_cycle_get_32());
-}
-
 int main(void)
 {
     int ret;
+
+    LOG_INF("main starting");
 
     if (!gpio_is_ready_dt(&led)) {
         LOG_ERR("LED device %s is not ready; ignoring it", led.port->name);
