@@ -60,3 +60,6 @@ fp-info-cache
 # Builds
 build/
 .cache/
+
+# KiCad
+*.lck
