@@ -1,5 +1,6 @@
-#include <zephyr/kernel.h>
+#include <stdbool.h>
+#include <stddef.h>
 
-int button_is_pressed(size_t button_index);
+bool button_is_pressed(size_t button_index);
 
 int buttons_init(void);

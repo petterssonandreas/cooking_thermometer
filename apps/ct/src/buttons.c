@@ -23,13 +23,13 @@ static struct k_thread buttons_thread;
 
 static int buttons_pressed[NUM_BUTTONS] = {0};
 
-int button_is_pressed(size_t button_index)
+bool button_is_pressed(size_t button_index)
 {
     if (button_index < 0 || button_index >= ARRAY_SIZE(buttons_pressed)) {
         return -EINVAL;
     }
 
-    return buttons_pressed[button_index];
+    return (buttons_pressed[button_index] != 0);
 }
 
 static void buttons_fn(void *p1, void *p2, void *p3)
