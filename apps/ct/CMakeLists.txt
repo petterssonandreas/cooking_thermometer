@@ -5,8 +5,9 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(ct)
 
 target_sources(app PRIVATE
-    src/display.c
     src/buttons.c
+    src/cttime.c
+    src/display.c
     src/main.c
 )
 zephyr_include_directories(src)

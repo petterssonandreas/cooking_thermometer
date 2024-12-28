@@ -12,6 +12,10 @@ module = CT_DISPLAY
 module-str = CT-Display
 source "subsys/logging/Kconfig.template.log_config"
 
+module = CT_TIME
+module-str = CT-Time
+source "subsys/logging/Kconfig.template.log_config"
+
 endmenu
 
 source "Kconfig.zephyr"

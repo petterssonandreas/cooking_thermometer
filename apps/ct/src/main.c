@@ -17,6 +17,7 @@ LOG_MODULE_REGISTER(ct_main, CONFIG_CT_MAIN_LOG_LEVEL);
 
 #include "buttons.h"
 #include "display.h"
+#include "cttime.h"
 
 #define PWM_LED_PERIOD NSEC_PER_MSEC
 
@@ -33,26 +34,22 @@ int main(void)
         LOG_ERR("Error: buzzer GPIO is not ready");
         return -ENODEV;
     }
-
     ret = gpio_pin_configure_dt(&buzzer, GPIO_OUTPUT_INACTIVE);
     if (ret < 0) {
         LOG_ERR("Error %d: failed to configure buzzer gpio", ret);
         return ret;
     }
-
     LOG_INF("Buzzer init done");
 
     if (!pwm_is_ready_dt(&ui_led)) {
         LOG_ERR("Error: PWM device %s is not ready", ui_led.dev->name);
         return -ENODEV;
     }
-
     ret = pwm_set_dt(&ui_led, PWM_LED_PERIOD, 0);
     if (ret < 0) {
         LOG_ERR("Error %d: failed to set pulse width", ret);
         return ret;
     }
-
     LOG_INF("PWM LEDs init done");
 
     ret = buttons_init();
@@ -60,15 +57,20 @@ int main(void)
         LOG_ERR("Error %d: failed to init buttons", ret);
         return ret;
     }
-
     LOG_INF("buttons init done");
+
+    ret = cttime_init();
+    if (ret) {
+        LOG_ERR("Error %d: failed to init time", ret);
+        return ret;
+    }
+    LOG_INF("Time init done");
 
     ret = display_init();
     if (ret) {
         LOG_ERR("Error %d: failed to init display", ret);
         return ret;
     }
-
     LOG_INF("Display init done");
 
     while (true) {
@@ -80,6 +82,7 @@ int main(void)
             pwm_set_pulse_dt(&ui_led, 0);
             gpio_pin_set_dt(&buzzer, 0);
         }
+        display_draw_time();
         k_sleep(K_MSEC(10));
     }
 

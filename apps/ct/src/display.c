@@ -1,16 +1,22 @@
 #include "display.h"
 
+#include <zephyr/kernel.h>
+#include <zephyr/device.h>
 #include <zephyr/display/cfb.h>
 #include <zephyr/drivers/display.h>
+#include <stdio.h>
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(ct_display, CONFIG_CT_DISPLAY_LOG_LEVEL);
 
+#include "cttime.h"
+
 #define FONT_IDX 1
+
+static const struct device *dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_display));
 
 int display_init(void)
 {
-    const struct device *dev;
     uint16_t x_res;
     uint16_t y_res;
     uint16_t rows;
@@ -18,7 +24,6 @@ int display_init(void)
     uint8_t font_width;
     uint8_t font_height;
 
-    dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_display));
     if (!device_is_ready(dev)) {
         LOG_ERR("Device %s not ready", dev->name);
         return 0;
@@ -66,4 +71,26 @@ int display_init(void)
     cfb_framebuffer_finalize(dev);
 
     return 0;
+}
+
+void display_draw_time(void)
+{
+    int ret;
+    struct rtc_time tm;
+
+    ret = cttime_get_date_time(&tm);
+    if (ret) {
+        LOG_ERR("Failed to get time: %d", ret);
+        return;
+    }
+
+    // LOG_INF("RTC date and time: %04d-%02d-%02d %02d:%02d:%02d", tm.tm_year + 1900,
+    //     tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+
+    char s[16];
+    snprintf(s, sizeof(s), "%02d:%02d:%02d", tm.tm_hour, tm.tm_min, tm.tm_sec);
+
+    cfb_framebuffer_clear(dev, false);
+    cfb_print(dev, s, 0, 24);
+    cfb_framebuffer_finalize(dev);
 }
