@@ -3,11 +3,10 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/sys/util.h>
 #include <zephyr/sys/printk.h>
-#include <inttypes.h>
 #include <errno.h>
 
 #include <zephyr/logging/log.h>
-LOG_MODULE_REGISTER(buttons);
+LOG_MODULE_REGISTER(ct_buttons, CONFIG_CT_BUTTONS_LOG_LEVEL);
 
 #define NUM_BUTTONS (3)
 

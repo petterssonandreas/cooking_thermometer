@@ -1,11 +1,15 @@
 menu "Cooking Thermometer configuration"
 
-module = MAIN
-module-str = Main
+module = CT_MAIN
+module-str = CT-Main
 source "subsys/logging/Kconfig.template.log_config"
 
-module = BUTTONS
-module-str = Buttons
+module = CT_BUTTONS
+module-str = CT-Buttons
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CT_DISPLAY
+module-str = CT-Display
 source "subsys/logging/Kconfig.template.log_config"
 
 endmenu
