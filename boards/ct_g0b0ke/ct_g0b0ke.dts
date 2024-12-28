@@ -64,6 +64,7 @@
 		uiled = &pwm_led0;
 		buzzer = &buzzer_0;
 		rtc = &rtc;
+		adc1 = &adc1;
 	};
 };
 

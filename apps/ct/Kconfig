@@ -16,6 +16,10 @@ module = CT_TIME
 module-str = CT-Time
 source "subsys/logging/Kconfig.template.log_config"
 
+module = CT_ADC
+module-str = CT-ADC
+source "subsys/logging/Kconfig.template.log_config"
+
 endmenu
 
 source "Kconfig.zephyr"

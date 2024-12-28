@@ -15,6 +15,7 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(ct_main, CONFIG_CT_MAIN_LOG_LEVEL);
 
+#include "adc.h"
 #include "buttons.h"
 #include "display.h"
 #include "cttime.h"
@@ -72,6 +73,21 @@ int main(void)
         return ret;
     }
     LOG_INF("Display init done");
+
+    ret = adc_init();
+    if (ret) {
+        LOG_ERR("Error %d: failed to init ADC", ret);
+        return ret;
+    }
+    LOG_INF("ADC init done");
+
+    int16_t vbat;
+    adc_get_battery_voltage(&vbat);
+    LOG_INF("vbat: %d mV", vbat);
+
+    int16_t temp_raw;
+    adc_get_temperature_raw(&temp_raw);
+    LOG_INF("temp_raw: %d", temp_raw);
 
     while (true) {
         if (button_is_pressed(0)) {

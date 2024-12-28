@@ -26,13 +26,13 @@ int display_init(void)
 
     if (!device_is_ready(dev)) {
         LOG_ERR("Device %s not ready", dev->name);
-        return 0;
+        return -ENODEV;
     }
 
     if (display_set_pixel_format(dev, PIXEL_FORMAT_MONO10) != 0) {
         if (display_set_pixel_format(dev, PIXEL_FORMAT_MONO01) != 0) {
             LOG_ERR("Failed to set required pixel format");
-            return 0;
+            return -EINVAL;
         }
     }
 
@@ -40,7 +40,7 @@ int display_init(void)
 
     if (cfb_framebuffer_init(dev)) {
         LOG_ERR("Framebuffer initialization failed!");
-        return 0;
+        return -ENODEV;
     }
 
     cfb_framebuffer_clear(dev, true);
