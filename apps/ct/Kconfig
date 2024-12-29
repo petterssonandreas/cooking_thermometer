@@ -28,6 +28,10 @@ module = CT_PROBE
 module-str = CT-Probe
 source "subsys/logging/Kconfig.template.log_config"
 
+module = CT_BATTERY
+module-str = CT-Battery
+source "subsys/logging/Kconfig.template.log_config"
+
 endmenu
 
 source "Kconfig.zephyr"

@@ -12,5 +12,6 @@ int state_init(void)
 
     state.temperature = INT16_MIN;
     state.probe_connected = false;
+    state.battery_percentage = 0;
     return 0;
 }

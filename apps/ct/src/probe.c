@@ -1,3 +1,4 @@
+#include "probe.h"
 #include "state.h"
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>

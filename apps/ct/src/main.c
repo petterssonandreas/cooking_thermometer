@@ -5,6 +5,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+#include "battery.h"
 #include "state.h"
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
@@ -89,6 +90,13 @@ int main(void)
         return ret;
     }
     LOG_INF("probe init done");
+
+    ret = battery_init();
+    if (ret) {
+        LOG_ERR("Error %d: failed to init battery", ret);
+        return ret;
+    }
+    LOG_INF("battery init done");
 
     ret = display_init();
     if (ret) {

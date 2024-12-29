@@ -24,11 +24,25 @@ static struct k_thread display_thread;
 static void display_draw_no_probe(void)
 {
     char s[16];
-
-    cfb_framebuffer_clear(dev, false);
     snprintf(s, sizeof(s), "---");
     cfb_print(dev, s, 0, 24);
-    cfb_framebuffer_finalize(dev);
+}
+
+static void display_draw_battery_level(uint8_t battery_percentage)
+{
+    cfb_invert_area(dev, 109, 0, 17, 16);
+    cfb_invert_area(dev, 111, 2, 13, 12);
+    cfb_invert_area(dev, 126, 5, 2, 6);
+
+    if (battery_percentage > 20) {
+        cfb_invert_area(dev, 112, 4, 3, 9);
+    }
+    if (battery_percentage > 60) {
+        cfb_invert_area(dev, 116, 4, 3, 9);
+    }
+    if (battery_percentage > 80) {
+        cfb_invert_area(dev, 120, 4, 3, 9);
+    }
 }
 
 static void display_fn(void *p1, void *p2, void *p3)
@@ -40,12 +54,20 @@ static void display_fn(void *p1, void *p2, void *p3)
     while (true) {
         k_sleep(K_MSEC(100));
 
+        /* Start by clearing */
+        cfb_framebuffer_clear(dev, false);
+
         if (!state.probe_connected) {
             display_draw_no_probe();
         }
         else {
             display_draw_temperature(state.temperature);
         }
+
+        display_draw_battery_level(state.battery_percentage);
+
+        /* Do the actual drawing */
+        cfb_framebuffer_finalize(dev);
     }
 }
 
@@ -135,28 +157,23 @@ void display_draw_time(void)
     char s[16];
     snprintf(s, sizeof(s), "%02d:%02d:%02d", tm.tm_hour, tm.tm_min, tm.tm_sec);
 
-    cfb_framebuffer_clear(dev, false);
     cfb_print(dev, s, 0, 24);
-    cfb_framebuffer_finalize(dev);
 }
 
 void display_draw_voltage(int16_t mvolt, int16_t raw)
 {
     char s[16];
 
-    cfb_framebuffer_clear(dev, false);
     snprintf(s, sizeof(s), "v: %d", mvolt);
     cfb_print(dev, s, 0, 0);
     snprintf(s, sizeof(s), "r: %d", raw);
     cfb_print(dev, s, 0, 24);
-    cfb_framebuffer_finalize(dev);
 }
 
 void display_draw_temperature(int16_t temperature)
 {
     char s[16];
 
-    cfb_framebuffer_clear(dev, false);
     if (temperature == INT16_MIN) {
         snprintf(s, sizeof(s), "-99 C");
     }
@@ -167,5 +184,4 @@ void display_draw_temperature(int16_t temperature)
         snprintf(s, sizeof(s), "% 3d C", temperature);
     }
     cfb_print(dev, s, 0, 24);
-    cfb_framebuffer_finalize(dev);
 }
