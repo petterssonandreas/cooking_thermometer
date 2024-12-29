@@ -6,12 +6,12 @@ project(ct)
 
 target_sources(app PRIVATE
     src/adc.c
+    src/alarm.c
     src/battery.c
     src/buttons.c
     src/cttime.c
     src/display.c
     src/main.c
     src/state.c
-    src/probe.c
 )
 zephyr_include_directories(src)

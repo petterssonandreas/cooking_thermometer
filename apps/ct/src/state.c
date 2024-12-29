@@ -23,12 +23,10 @@ int state_init(void)
 
     state.state = STATE_INIT;
     state.temperature = INT16_MIN;
-    state.target_temperature = 60;
+    state.target_temperature = 25;
     state.probe_connected = false;
     state.battery_percentage = 0;
     state.blink = true;
-
-    // k_fifo_init(&state_fifo);
 
     k_timer_init(&blink_timer, blink_timer_expiry_function, NULL);
     k_timer_start(&blink_timer, K_MSEC(500), K_MSEC(500));

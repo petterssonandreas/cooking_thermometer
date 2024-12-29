@@ -24,12 +24,12 @@ module = CT_STATE
 module-str = CT-State
 source "subsys/logging/Kconfig.template.log_config"
 
-module = CT_PROBE
-module-str = CT-Probe
-source "subsys/logging/Kconfig.template.log_config"
-
 module = CT_BATTERY
 module-str = CT-Battery
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CT_ALARM
+module-str = CT-Alarm
 source "subsys/logging/Kconfig.template.log_config"
 
 endmenu

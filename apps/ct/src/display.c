@@ -59,12 +59,17 @@ static void display_fn(void *p1, void *p2, void *p3)
         /* Start by clearing */
         cfb_framebuffer_clear(dev, false);
 
+        snprintf(s, sizeof(s), "%d", state.state);
+        cfb_print(dev, s, 0, 0);
+
         switch (state.state) {
         case STATE_INIT:
             cfb_print(dev, "Init", 0, 24);
             break;
 
         case STATE_IDLE:
+        case STATE_TARGET_TEMP_REACHED:
+        case STATE_TARGET_TEMP_REACHED_ACKED:
             if (!state.probe_connected) {
                 display_draw_no_probe();
             }

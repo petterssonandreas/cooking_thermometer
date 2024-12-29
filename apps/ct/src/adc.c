@@ -6,6 +6,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/adc.h>
+#include <zephyr/drivers/gpio.h>
 #include <zephyr/sys/util.h>
 
 
@@ -13,6 +14,8 @@
 LOG_MODULE_REGISTER(ct_adc, CONFIG_CT_ADC_LOG_LEVEL);
 
 static const struct device *const adc1 = DEVICE_DT_GET(DT_ALIAS(adc1));
+
+static const struct gpio_dt_spec jack = GPIO_DT_SPEC_GET_OR(DT_ALIAS(jack_connected), gpios, {0});
 
 /* Define ADC resolution and channel */
 #define ADC_RESOLUTION 12
@@ -100,16 +103,38 @@ static void adc_temperature_fn(void *p1, void *p2, void *p3)
     UNUSED(p2);
     UNUSED(p3);
 
-    while (true) {
-        k_sleep(K_MSEC(3000));
+    int prev_jack_value = 0;
+    int jack_value = 0;
 
-        int16_t temperature;
-        int ret = adc_get_temperature(&temperature);
-        if (ret) {
-            LOG_ERR("Failed to get temp reading");
+    while (true) {
+        k_sleep(K_MSEC(1500));
+
+        /* Check if probe connected */
+        prev_jack_value = jack_value;
+        jack_value = gpio_pin_get_dt(&jack);
+        if (jack_value && !prev_jack_value) {
+            LOG_INF("Jack connected!");
+        }
+        else if (!jack_value && prev_jack_value) {
+            LOG_INF("Jack disconnected!");
+        }
+
+        if (jack_value && prev_jack_value) {
+            /* Probe is connected and has been for long enough to get stable reading */
+            state.probe_connected = true;
+
+            int16_t temperature;
+            int ret = adc_get_temperature(&temperature);
+            if (ret) {
+                LOG_ERR("Failed to get temp reading");
+            }
+            else {
+                state.temperature = temperature;
+            }
         }
         else {
-            state.temperature = temperature;
+            state.probe_connected = false;
+            state.temperature = INT16_MIN;
         }
     }
 }
@@ -136,6 +161,18 @@ int adc_init(void)
     if (ret < 0) {
         LOG_ERR("ADC channel setup for temperature failed with error %d", ret);
         return -ENODEV;
+    }
+
+    /* Also configure Probe GPIO, to know if it is connected */
+    if (!gpio_is_ready_dt(&jack)) {
+        LOG_ERR("Error: button device %s is not ready", jack.port->name);
+        return -ENODEV;
+    }
+
+    ret = gpio_pin_configure_dt(&jack, GPIO_INPUT);
+    if (ret != 0) {
+        LOG_ERR("Error %d: failed to configure %s pin %d", ret, jack.port->name, jack.pin);
+        return -EIO;
     }
 
     k_thread_create(
