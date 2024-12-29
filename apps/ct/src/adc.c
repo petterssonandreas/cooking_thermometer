@@ -1,5 +1,6 @@
 #include "adc.h"
 #include "display.h"
+#include "state.h"
 
 #include <stdlib.h>
 #include <zephyr/kernel.h>
@@ -89,11 +90,11 @@ static int16_t interpolate_temperature(int16_t raw)
     return INT16_MIN;
 }
 
-static K_THREAD_STACK_DEFINE(adc_temp_raw_thread_stack, 1024);
+static K_THREAD_STACK_DEFINE(adc_temperature_thread_stack, 1024);
 
-static struct k_thread adc_temp_raw_thread;
+static struct k_thread adc_temperature_thread;
 
-static void adc_temp_raw_fn(void *p1, void *p2, void *p3)
+static void adc_temperature_fn(void *p1, void *p2, void *p3)
 {
     UNUSED(p1);
     UNUSED(p2);
@@ -102,16 +103,14 @@ static void adc_temp_raw_fn(void *p1, void *p2, void *p3)
     while (true) {
         k_sleep(K_MSEC(3000));
 
-        int16_t raw;
-        int ret = adc_get_temperature_raw(&raw);
+        int16_t temperature;
+        int ret = adc_get_temperature(&temperature);
         if (ret) {
-            LOG_ERR("Failed to get raw temp reading");
-            continue;
+            LOG_ERR("Failed to get temp reading");
         }
-
-        int16_t temperature = interpolate_temperature(raw);
-        display_draw_temperature(temperature);
-        LOG_INF("ADC temperature sample value: %d C (raw: %d)", temperature, raw);
+        else {
+            state.temperature = temperature;
+        }
     }
 }
 
@@ -140,10 +139,10 @@ int adc_init(void)
     }
 
     k_thread_create(
-        &adc_temp_raw_thread,
-        adc_temp_raw_thread_stack,
-        K_THREAD_STACK_SIZEOF(adc_temp_raw_thread_stack),
-        adc_temp_raw_fn,
+        &adc_temperature_thread,
+        adc_temperature_thread_stack,
+        K_THREAD_STACK_SIZEOF(adc_temperature_thread_stack),
+        adc_temperature_fn,
         NULL, NULL, NULL,
         K_LOWEST_APPLICATION_THREAD_PRIO,
         0,
@@ -182,7 +181,7 @@ int adc_get_battery_voltage(int16_t *vbat_mv)
     return 0;
 }
 
-int adc_get_temperature_raw(int16_t *temperature_raw)
+int adc_get_temperature(int16_t *temperature)
 {
     int ret;
     int16_t sample_buffer;
@@ -199,6 +198,8 @@ int adc_get_temperature_raw(int16_t *temperature_raw)
         return ret;
     }
 
-    *temperature_raw = sample_buffer;
+    int16_t interpolated_temp = interpolate_temperature(sample_buffer);
+    LOG_DBG("ADC temperature sample value: %d C (raw: %d)", interpolated_temp, sample_buffer);
+    *temperature = interpolated_temp;
     return 0;
 }

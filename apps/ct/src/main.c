@@ -5,6 +5,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+#include "state.h"
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
@@ -19,6 +20,7 @@ LOG_MODULE_REGISTER(ct_main, CONFIG_CT_MAIN_LOG_LEVEL);
 #include "buttons.h"
 #include "display.h"
 #include "cttime.h"
+#include "probe.h"
 
 #define PWM_LED_PERIOD NSEC_PER_MSEC
 
@@ -30,6 +32,13 @@ int main(void)
     int ret;
 
     LOG_INF("main starting");
+
+    ret = state_init();
+    if (ret) {
+        LOG_ERR("Error %d: failed to init state", ret);
+        return ret;
+    }
+    LOG_INF("state init done");
 
     if (!gpio_is_ready_dt(&buzzer)) {
         LOG_ERR("Error: buzzer GPIO is not ready");
@@ -67,13 +76,6 @@ int main(void)
     }
     LOG_INF("Time init done");
 
-    ret = display_init();
-    if (ret) {
-        LOG_ERR("Error %d: failed to init display", ret);
-        return ret;
-    }
-    LOG_INF("Display init done");
-
     ret = adc_init();
     if (ret) {
         LOG_ERR("Error %d: failed to init ADC", ret);
@@ -81,13 +83,19 @@ int main(void)
     }
     LOG_INF("ADC init done");
 
-    int16_t vbat;
-    adc_get_battery_voltage(&vbat);
-    LOG_INF("vbat: %d mV", vbat);
+    ret = probe_init();
+    if (ret) {
+        LOG_ERR("Error %d: failed to init probe", ret);
+        return ret;
+    }
+    LOG_INF("probe init done");
 
-    int16_t temp_raw;
-    adc_get_temperature_raw(&temp_raw);
-    LOG_INF("temp_raw: %d", temp_raw);
+    ret = display_init();
+    if (ret) {
+        LOG_ERR("Error %d: failed to init display", ret);
+        return ret;
+    }
+    LOG_INF("Display init done");
 
     while (true) {
         if (button_is_pressed(0)) {

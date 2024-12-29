@@ -10,10 +10,44 @@
 LOG_MODULE_REGISTER(ct_display, CONFIG_CT_DISPLAY_LOG_LEVEL);
 
 #include "cttime.h"
+#include "state.h"
 
 #define FONT_IDX 1
 
 static const struct device *dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_display));
+
+static K_THREAD_STACK_DEFINE(display_thread_stack, 1024);
+
+static struct k_thread display_thread;
+
+
+static void display_draw_no_probe(void)
+{
+    char s[16];
+
+    cfb_framebuffer_clear(dev, false);
+    snprintf(s, sizeof(s), "---");
+    cfb_print(dev, s, 0, 24);
+    cfb_framebuffer_finalize(dev);
+}
+
+static void display_fn(void *p1, void *p2, void *p3)
+{
+    UNUSED(p1);
+    UNUSED(p2);
+    UNUSED(p3);
+
+    while (true) {
+        k_sleep(K_MSEC(100));
+
+        if (!state.probe_connected) {
+            display_draw_no_probe();
+        }
+        else {
+            display_draw_temperature(state.temperature);
+        }
+    }
+}
 
 int display_init(void)
 {
@@ -70,6 +104,17 @@ int display_init(void)
     cfb_print(dev, "Booting", 0, 24);
     cfb_framebuffer_finalize(dev);
 
+    /* Start display thread */
+    k_thread_create(
+        &display_thread,
+        display_thread_stack,
+        K_THREAD_STACK_SIZEOF(display_thread_stack),
+        display_fn,
+        NULL, NULL, NULL,
+        K_LOWEST_APPLICATION_THREAD_PRIO,
+        0,
+        K_NO_WAIT);
+
     return 0;
 }
 
@@ -112,7 +157,15 @@ void display_draw_temperature(int16_t temperature)
     char s[16];
 
     cfb_framebuffer_clear(dev, false);
-    snprintf(s, sizeof(s), "%d C", temperature);
+    if (temperature == INT16_MIN) {
+        snprintf(s, sizeof(s), "-99 C");
+    }
+    else if (temperature == INT16_MAX) {
+        snprintf(s, sizeof(s), "999 C");
+    }
+    else {
+        snprintf(s, sizeof(s), "% 3d C", temperature);
+    }
     cfb_print(dev, s, 0, 24);
     cfb_framebuffer_finalize(dev);
 }

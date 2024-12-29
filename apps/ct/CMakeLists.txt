@@ -10,5 +10,7 @@ target_sources(app PRIVATE
     src/cttime.c
     src/display.c
     src/main.c
+    src/state.c
+    src/probe.c
 )
 zephyr_include_directories(src)

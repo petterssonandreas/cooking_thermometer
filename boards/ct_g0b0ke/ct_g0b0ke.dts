@@ -50,6 +50,10 @@
 			gpios = <&gpioa 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 			zephyr,code = <INPUT_KEY_C>;
 		};
+		jack_conn: jack_conn {
+			label = "Audio Jack Connected";
+			gpios = <&gpioa 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+		};
 	};
 
 	aliases {
@@ -57,6 +61,7 @@
 		swa = &user_button_a;
 		swb = &user_button_b;
 		swc = &user_button_c;
+		jack-connected = &jack_conn;
 		// watchdog0 = &iwdg;
 		// die-temp0 = &die_temp;
 		// volt-sensor0 = &vref;

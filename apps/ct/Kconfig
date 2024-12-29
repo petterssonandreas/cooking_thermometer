@@ -20,6 +20,14 @@ module = CT_ADC
 module-str = CT-ADC
 source "subsys/logging/Kconfig.template.log_config"
 
+module = CT_STATE
+module-str = CT-State
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CT_PROBE
+module-str = CT-Probe
+source "subsys/logging/Kconfig.template.log_config"
+
 endmenu
 
 source "Kconfig.zephyr"
