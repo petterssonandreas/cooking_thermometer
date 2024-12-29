@@ -51,17 +51,38 @@ static void display_fn(void *p1, void *p2, void *p3)
     UNUSED(p2);
     UNUSED(p3);
 
+    char s[16];
+
     while (true) {
         k_sleep(K_MSEC(100));
 
         /* Start by clearing */
         cfb_framebuffer_clear(dev, false);
 
-        if (!state.probe_connected) {
-            display_draw_no_probe();
-        }
-        else {
-            display_draw_temperature(state.temperature);
+        switch (state.state) {
+        case STATE_INIT:
+            cfb_print(dev, "Init", 0, 24);
+            break;
+
+        case STATE_IDLE:
+            if (!state.probe_connected) {
+                display_draw_no_probe();
+            }
+            else {
+                display_draw_temperature(state.temperature);
+            }
+            break;
+
+        case STATE_SET_TARGET_TEMP:
+            if (state.blink) {
+                snprintf(s, sizeof(s), "% 3d *C", state.target_temperature);
+                cfb_print(dev, s, 0, 24);
+            }
+            break;
+
+        default:
+            cfb_print(dev, "state?", 0, 24);
+            break;
         }
 
         display_draw_battery_level(state.battery_percentage);
@@ -175,13 +196,13 @@ void display_draw_temperature(int16_t temperature)
     char s[16];
 
     if (temperature == INT16_MIN) {
-        snprintf(s, sizeof(s), "-99 C");
+        snprintf(s, sizeof(s), "-99 *C");
     }
     else if (temperature == INT16_MAX) {
-        snprintf(s, sizeof(s), "999 C");
+        snprintf(s, sizeof(s), "999 *C");
     }
     else {
-        snprintf(s, sizeof(s), "% 3d C", temperature);
+        snprintf(s, sizeof(s), "% 3d *C", temperature);
     }
     cfb_print(dev, s, 0, 24);
 }

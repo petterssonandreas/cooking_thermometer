@@ -28,9 +28,20 @@ LOG_MODULE_REGISTER(ct_main, CONFIG_CT_MAIN_LOG_LEVEL);
 static const struct gpio_dt_spec buzzer = GPIO_DT_SPEC_GET(DT_ALIAS(buzzer), gpios);
 static const struct pwm_dt_spec ui_led = PWM_DT_SPEC_GET(DT_ALIAS(uiled));
 
+static void set_target_temp_timer_expiry_function(struct k_timer *timer_id) {
+    state_queue_entry_t queue_entry;
+    queue_entry.event = STATE_EVENT_SET_TARGET_TEMP_TIMER_ELAPSED;
+    if (k_msgq_put(&state_msgq, &queue_entry, K_NO_WAIT)) {
+        LOG_WRN("Failed to put target temp timer event in msgq");
+    }
+}
+
+K_TIMER_DEFINE(set_target_temp_timer, set_target_temp_timer_expiry_function, NULL);
+
 int main(void)
 {
     int ret;
+    state_queue_entry_t queue_entry;
 
     LOG_INF("main starting");
 
@@ -105,16 +116,62 @@ int main(void)
     }
     LOG_INF("Display init done");
 
+    state.state = STATE_IDLE;
+
     while (true) {
-        if (button_is_pressed(0)) {
-            pwm_set_pulse_dt(&ui_led, PWM_LED_PERIOD);
-            gpio_pin_set_dt(&buzzer, 1);
+        if (k_msgq_get(&state_msgq, &queue_entry, K_FOREVER)) {
+            LOG_WRN("Failed to get message from message queue");
+            continue;
         }
-        else {
-            pwm_set_pulse_dt(&ui_led, 0);
-            gpio_pin_set_dt(&buzzer, 0);
+
+        switch (state.state) {
+        case STATE_IDLE:
+            switch (queue_entry.event) {
+            case STATE_EVENT_BUTTON_PRESSED:
+                if (queue_entry.data == 2) {
+                    state.state = STATE_SET_TARGET_TEMP;
+                    state_reset_blink_timer();
+                    k_timer_start(&set_target_temp_timer, K_SECONDS(5), K_NO_WAIT);
+                }
+                break;
+
+            default:
+                break;
+            }
+            break;
+
+        case STATE_SET_TARGET_TEMP:
+            switch (queue_entry.event) {
+            case STATE_EVENT_BUTTON_PRESSED:
+                if (queue_entry.data == 0) {
+                    state.target_temperature++;
+                    state_reset_blink_timer();
+                    k_timer_start(&set_target_temp_timer, K_SECONDS(5), K_NO_WAIT);
+                }
+                else if (queue_entry.data == 1) {
+                    state.target_temperature--;
+                    state_reset_blink_timer();
+                    k_timer_start(&set_target_temp_timer, K_SECONDS(5), K_NO_WAIT);
+                }
+                else if (queue_entry.data == 2) {
+                    state.state = STATE_IDLE;
+                    k_timer_stop(&set_target_temp_timer);
+                }
+                break;
+
+            case STATE_EVENT_SET_TARGET_TEMP_TIMER_ELAPSED:
+                state.state = STATE_IDLE;
+                break;
+
+            default:
+                break;
+            }
+            break;
+
+        default:
+            __ASSERT(false, "Bad state: %d", state.state);
+            break;
         }
-        k_sleep(K_MSEC(10));
     }
 
     return 0;

@@ -1,3 +1,4 @@
+#include "state.h"
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
@@ -37,6 +38,8 @@ static void buttons_fn(void *p1, void *p2, void *p3)
     UNUSED(p2);
     UNUSED(p3);
 
+    state_queue_entry_t queue_entry;
+
     static int prev_button_state[NUM_BUTTONS] = {0};
     static int button_state[NUM_BUTTONS] = {0};
 
@@ -56,12 +59,22 @@ static void buttons_fn(void *p1, void *p2, void *p3)
                 // TODO: Trigger event? Callback?
                 buttons_pressed[i] = 1;
                 LOG_INF("Button %d pressed", i);
+                queue_entry.event = STATE_EVENT_BUTTON_PRESSED;
+                queue_entry.data = i;
+                if (k_msgq_put(&state_msgq, &queue_entry, K_NO_WAIT)) {
+                    LOG_WRN("Failed to put pressed event in msgq");
+                }
             }
             else if ((buttons_pressed[i] == 1) && (prev_button_state[i] == 0) && (button_state[i] == 0)) {
                 // Was pressed before, but has now been not pressed long enough
                 // TODO: Trigger event? Callback?
                 buttons_pressed[i] = 0;
                 LOG_INF("Button %d released", i);
+                queue_entry.event = STATE_EVENT_BUTTON_RELEASED;
+                queue_entry.data = i;
+                if (k_msgq_put(&state_msgq, &queue_entry, K_NO_WAIT)) {
+                    LOG_WRN("Failed to put released event in msgq");
+                }
             }
         }
 
