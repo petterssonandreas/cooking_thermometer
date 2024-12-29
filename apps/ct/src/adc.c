@@ -1,5 +1,7 @@
-#include "cttime.h"
+#include "adc.h"
+#include "display.h"
 
+#include <stdlib.h>
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/adc.h>
@@ -34,6 +36,85 @@ static struct adc_channel_cfg adc_temp_cfg = {
     .differential     = 0,
 };
 
+typedef struct CurveValue_s
+{
+    int16_t raw_reading;
+    int16_t temperature;
+} CurveValue_t;
+
+static CurveValue_t TemperatureCurve[] =
+{
+    {.raw_reading=3790, .temperature=-20},
+    {.raw_reading=3046, .temperature=4},
+    {.raw_reading=2226, .temperature=22},
+    {.raw_reading=2120, .temperature=24},
+    {.raw_reading=2016, .temperature=26},
+    {.raw_reading=1724, .temperature=32},
+    {.raw_reading=1664, .temperature=34},
+    {.raw_reading=1407, .temperature=40},
+    {.raw_reading=1104, .temperature=49},
+    {.raw_reading=994, .temperature=52},
+    {.raw_reading=812, .temperature=58},
+    {.raw_reading=782, .temperature=59},
+    {.raw_reading=584, .temperature=69},
+    {.raw_reading=535, .temperature=71},
+    {.raw_reading=474, .temperature=75},
+    {.raw_reading=394, .temperature=81},
+    {.raw_reading=370, .temperature=83},
+    {.raw_reading=334, .temperature=86},
+    {.raw_reading=321, .temperature=88},
+};
+
+
+static int16_t interpolate_temperature(int16_t raw)
+{
+    if (raw > TemperatureCurve[0].raw_reading) {
+        return INT16_MIN;
+    }
+    if (raw < TemperatureCurve[ARRAY_SIZE(TemperatureCurve) - 1].raw_reading) {
+        return INT16_MAX;
+    }
+
+    for (size_t i = 0; i < ARRAY_SIZE(TemperatureCurve) - 1; i++)
+    {
+        if ((raw <= TemperatureCurve[i].raw_reading) && (raw > TemperatureCurve[i + 1].raw_reading)) {
+            int32_t raw_range = abs(TemperatureCurve[i + 1].raw_reading - TemperatureCurve[i].raw_reading);
+            int32_t temp_range = abs(TemperatureCurve[i + 1].temperature - TemperatureCurve[i].temperature);
+            int32_t offset_into_raw = abs(raw - TemperatureCurve[i].raw_reading);
+            return ((offset_into_raw * temp_range) / raw_range) + TemperatureCurve[i].temperature;
+        }
+    }
+
+    /* Should not get here */
+    return INT16_MIN;
+}
+
+static K_THREAD_STACK_DEFINE(adc_temp_raw_thread_stack, 1024);
+
+static struct k_thread adc_temp_raw_thread;
+
+static void adc_temp_raw_fn(void *p1, void *p2, void *p3)
+{
+    UNUSED(p1);
+    UNUSED(p2);
+    UNUSED(p3);
+
+    while (true) {
+        k_sleep(K_MSEC(3000));
+
+        int16_t raw;
+        int ret = adc_get_temperature_raw(&raw);
+        if (ret) {
+            LOG_ERR("Failed to get raw temp reading");
+            continue;
+        }
+
+        int16_t temperature = interpolate_temperature(raw);
+        display_draw_temperature(temperature);
+        LOG_INF("ADC temperature sample value: %d C (raw: %d)", temperature, raw);
+    }
+}
+
 int adc_init(void)
 {
     int ret;
@@ -57,6 +138,16 @@ int adc_init(void)
         LOG_ERR("ADC channel setup for temperature failed with error %d", ret);
         return -ENODEV;
     }
+
+    k_thread_create(
+        &adc_temp_raw_thread,
+        adc_temp_raw_thread_stack,
+        K_THREAD_STACK_SIZEOF(adc_temp_raw_thread_stack),
+        adc_temp_raw_fn,
+        NULL, NULL, NULL,
+        K_LOWEST_APPLICATION_THREAD_PRIO,
+        0,
+        K_NO_WAIT);
 
     return 0;
 }
@@ -96,7 +187,7 @@ int adc_get_temperature_raw(int16_t *temperature_raw)
     int ret;
     int16_t sample_buffer;
     struct adc_sequence sequence = {
-        .channels    = BIT(ADC_BATT_CHANNEL_ID),
+        .channels    = BIT(ADC_TEMP_CHANNEL_ID),
         .buffer      = &sample_buffer,
         .buffer_size = sizeof(sample_buffer),
         .resolution  = ADC_RESOLUTION,

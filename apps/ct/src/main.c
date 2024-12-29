@@ -98,7 +98,6 @@ int main(void)
             pwm_set_pulse_dt(&ui_led, 0);
             gpio_pin_set_dt(&buzzer, 0);
         }
-        display_draw_time();
         k_sleep(K_MSEC(10));
     }
 

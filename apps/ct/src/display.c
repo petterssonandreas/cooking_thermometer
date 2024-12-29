@@ -94,3 +94,25 @@ void display_draw_time(void)
     cfb_print(dev, s, 0, 24);
     cfb_framebuffer_finalize(dev);
 }
+
+void display_draw_voltage(int16_t mvolt, int16_t raw)
+{
+    char s[16];
+
+    cfb_framebuffer_clear(dev, false);
+    snprintf(s, sizeof(s), "v: %d", mvolt);
+    cfb_print(dev, s, 0, 0);
+    snprintf(s, sizeof(s), "r: %d", raw);
+    cfb_print(dev, s, 0, 24);
+    cfb_framebuffer_finalize(dev);
+}
+
+void display_draw_temperature(int16_t temperature)
+{
+    char s[16];
+
+    cfb_framebuffer_clear(dev, false);
+    snprintf(s, sizeof(s), "%d C", temperature);
+    cfb_print(dev, s, 0, 24);
+    cfb_framebuffer_finalize(dev);
+}
