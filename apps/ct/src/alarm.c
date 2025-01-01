@@ -11,6 +11,9 @@ LOG_MODULE_REGISTER(ct_alarm, CONFIG_CT_ALARM_LOG_LEVEL);
 
 #define PWM_LED_PERIOD NSEC_PER_MSEC
 
+#define ALARM_ON_TIME_MSEC 50
+#define ALARM_OFF_TIME_MSEC 950
+
 static const struct pwm_dt_spec ui_led = PWM_DT_SPEC_GET(DT_ALIAS(uiled));
 static const struct gpio_dt_spec buzzer = GPIO_DT_SPEC_GET(DT_ALIAS(buzzer), gpios);
 
@@ -20,16 +23,21 @@ static uint32_t current_ui_led_pulse = 0;
 
 static void alarm_timer_expiry_function(struct k_timer *timer_id)
 {
+    k_timeout_t timeout;
+
     if (current_ui_led_pulse > 0) {
         pwm_set_pulse_dt(&ui_led, 0);
         current_ui_led_pulse = 0;
+        timeout = K_MSEC(ALARM_OFF_TIME_MSEC);
     }
     else {
         pwm_set_pulse_dt(&ui_led, PWM_LED_PERIOD);
         current_ui_led_pulse = PWM_LED_PERIOD;
+        timeout = K_MSEC(ALARM_ON_TIME_MSEC);
     }
 
     gpio_pin_toggle_dt(&buzzer);
+    k_timer_start(&alarm_timer, timeout, K_NO_WAIT);
 }
 
 static void alarm_timer_stop_function(struct k_timer *timer_id)
@@ -73,7 +81,7 @@ int alarm_init(void)
 
 void alarm_enable(void)
 {
-    k_timer_start(&alarm_timer, K_NO_WAIT, K_MSEC(500));
+    k_timer_start(&alarm_timer, K_NO_WAIT, K_NO_WAIT);
 }
 
 void alarm_disable(void)
