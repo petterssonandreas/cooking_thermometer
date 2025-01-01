@@ -5,6 +5,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/shell/shell.h>
 #include <zephyr/sys/util.h>
 
 #include <zephyr/logging/log.h>
@@ -94,3 +95,28 @@ int battery_init(void)
 
     return 0;
 }
+
+static int battery_cmd(const struct shell *sh, size_t argc, char **argv)
+{
+    UNUSED(argc);
+    UNUSED(argv);
+
+    int ret;
+    int16_t vbat_mv;
+    uint8_t battery_percentage;
+
+    ret = adc_get_battery_voltage(&vbat_mv);
+    if (ret) {
+        shell_print(sh, "Failed to get battery voltage");
+        return ret;
+    }
+
+    battery_percentage = interpolate_battery_level(vbat_mv);
+
+    shell_print(sh, "Battery info:");
+    shell_print(sh, "   Voltage:    %d mV", vbat_mv);
+    shell_print(sh, "   Percentage: %u%%", battery_percentage);
+    return 0;
+}
+
+SHELL_CMD_REGISTER(battery, NULL, "Battery info", battery_cmd);
